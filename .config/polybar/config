@@ -1,0 +1,343 @@
+[colors]
+;background = #99DADEE9
+
+background = #1C1C1C
+background-alt = #fff
+foreground = #fff
+primary = #444444
+alert = #bd2c4u
+underline = #00000000
+
+[bar/example]
+
+enable-ipc = true
+
+;monitor = ${env:MONITOR:DP1}
+;width = 75%
+height = 22
+
+;border-left-size = 20%
+;border-right-size = 17.5%
+
+;radius-top = 0
+;radius-bottom= 10px
+
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #2274A5
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = SourceCodePro:size=11
+font-1 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-2= Material Design Icons
+
+modules-left = i3 pulseaudio
+modules-center = title
+modules-right = xkeyboard battery date
+
+tray-position = right
+tray-padding = 2
+
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/pulseaudio]
+type = internal/pulseaudio
+;
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume =  <label-volume> <ramp-volume> 
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+label-muted =  
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+; Right and Middle click (unreleased)
+click-right = pavucontrol &
+; click-middle =
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+
+;format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-prefix-underline = {colors.underline}
+
+label-layout = %layout%
+label-layout-underline = ${colors.underline}
+
+label-indicator-padding = 0
+label-indicator-margin = 0
+label-indicator-background = ${colors.background-alt}
+label-indicator-underline = ${colors.underline}
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-underline= ${colors.background-alt}
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+
+; Separator in between workspaces
+
+label-separator = >
+
+[module/title]
+type = internal/xwindow
+label = %title%
+
+[module/i3]
+
+type = internal/i3
+index-sort = true
+wrapping-scroll = false
+
+strip-wsnumber = true;
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+format = <label-state> <label-mode>
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+;focused = Active workspace on focused monitor
+label-focused = %icon% %index%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+;unfocused = Inactive workspace on any monitor
+;label-unfocused = %index%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+;visible = Active workspace on unfocused monitor
+;label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+; Separator in between workspaces
+label-separator = >
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = ""
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.underline}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #A9ACA9
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = " %d-%m-%Y"
+
+time = %H:%M:%S
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+
+label = %date% %time%
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+
+format-charging = <animation-charging> <label-charging>
+;format-charging-underline = #b113f4
+
+format-discharging = <ramp-capacity>  <label-discharging>
+;format-discharging-underline = #13a5f4
+
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 1
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #81D2C7
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.underline}
+label-close =  
+label-close-foreground = ${colors.underline}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 = 
+menu-0-0-exec = menu-open-1
+
+menu-0-1 =  
+menu-0-1-exec = menu-open-2
+
+#menu-1-0 = cancel
+#menu-1-0-exec = menu-open-0
+menu-1-0 = reboot
+menu-1-0-exec = sudo reboot
+
+menu-2-0 =  power off
+menu-2-0-exec = sudo poweroff
+#menu-2-1 = cancel
+#menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 50
+margin-bottom = 50
+
+; vim:ft=dosini

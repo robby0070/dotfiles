@@ -1,0 +1,28 @@
+#zathura configuration file
+
+set window-title-basename true
+set window-title-page true
+
+#stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+set selection-clipboard clipboard
+set guioptions ""
+
+
+set default-bg "#525659"
+
+#mappings
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+map d toggle_page_mode
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+map p print
+map h scroll full-up
+map l scroll full-down

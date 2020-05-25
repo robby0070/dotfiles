@@ -1,0 +1,103 @@
+## SCREEN ##
+
+## POGRAMS ##
+
+super + shift + BackSpace 
+	prompt "shut down ?" "poweroff"
+
+super + Return
+	$TERMINAL
+
+super + a
+	flash_window
+
+super + b
+	polybar-msg cmd toggle
+
+super + c
+	xcmenuctrl
+
+super + shift + c
+	code
+
+super + d
+	dmenu_run -i -nb '#1C2023' -sf '#ffffff' -sb '#45C7C4' -nf '#ffffff'
+
+super + shift + d
+	deluge
+
+super + i
+	$TERMINAL -e htop
+
+super + v ; + {k}
+	VBoxManage startvm {"kali"}
+
+super + n
+	$TERMINAL -e nmtui
+
+super + shift + n
+	$TERMINAL -c Music -e ncmpcpp
+
+super + p
+	passmenu -nb '#1C2023' -sf '#ffffff' -sb '#45C7C4' -nf '#ffffff'
+
+control + super + p
+	pactl_round_sink.sh
+
+super + shift + p
+	pavucontrol
+
+super + shift + q
+	qualculate
+
+super + r
+	$TERMINAL -e ranger
+
+super + shift + r
+	killall sxhkd; sxhkd
+
+super + s
+	import "/home/roberto-arch/tmp/screenshot_$(date +%s).png"
+
+super + shift + t
+	thunar
+
+super + shift + v
+	vlc
+
+super + w
+	$BROWSER --incognito
+
+super + shift + w
+	$BROWSER
+
+super + shift + z
+	zathura $( zenity --file-selection --filename=/home/roberto-arch/doc --file-filter='*.pdf')
+#
+#music 
+
+super + backslash ; {space, h, l, shift h, shift l, s, c} 
+	mpc {toggle, prev, next, seekthrough -00:00:30, seekthrough +00:00:30, shuffle, clear}
+	
+super + backslash ; {d} 
+	{prompt "rm the current song?" "removesong"}
+
+super + backslash ; {p} 
+	{select_playlist, save_playlist} | mpc {load, save}
+
+## MEDIA CONTROL ##
+
+super + m
+	pactl set-sink-mute $(pulseaudio_get_default.sh) toggle
+
+super + {minus,equal} 
+	pactl set-sink-volume @DEFAULT_SINK@ {-,+}5% 
+
+super + control + {minus,equal} 
+	pactl set-sink-volume @DEFAULT_SINK@ {-,+}2% 
+
+super + shift + {minus,equal} 
+	xbacklight {-dec,-inc} 5
+
+super + control + shift + {minus,equal} 
+	xbacklight {-dec,-inc} 2
