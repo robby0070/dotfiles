@@ -1,0 +1,4 @@
+#!/bin/bash
+FILE=$HOME/.local/bin/$1  
+[ ! -f $FILE ] && echo '#!/bin/bash' > $FILE && chmod +x $FILE
+$EDITOR $FILE

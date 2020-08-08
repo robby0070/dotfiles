@@ -1,0 +1,3 @@
+#!/bin/bash
+
+figlet -f /usr/share/figlet/custom-fonts/3d.flf $1 | lolcat

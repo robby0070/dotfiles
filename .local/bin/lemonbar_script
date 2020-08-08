@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#!/usr/bin/bash
+
+# Define the clock
+DATETIME="ciao"
+function Clock() {
+	while true; do
+		echo $(date "+%a %b %d, %T") > /dev/shm/clock
+		sleep 1
+	done
+}
+Clock &
+
+Battery() {
+	while true; do
+		echo $(acpi --battery | cut -d, -f2) > /dev/shm/battery
+		sleep 10
+	done
+}
+Battery &
+
+SelectedWorkspace() {
+	bspc query --names  -D -d
+}
+
+# Print the clock
+
+while true; do
+	BAR="%{l}"
+	SELECTED=$(SelectedWorkspace)
+	for i in {1..10}; do
+		if [ $i = $SELECTED ]; then BAR+=" \u25CF "; else BAR+=" \u25CB "; fi
+	done
+	BAR+="%{c} $(</dev/shm/clock)%{F-}%{B-} %{r}$(</dev/shm/battery) \uf242"
+	echo -e $BAR
+	sleep .2
+done &
+

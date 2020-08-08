@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SDIR=`dirname "$0"`
+echo $SDIR
+BASENAME="${1%%.*}"
+echo $BASENAME
+
+pandoc \
+	$1 \
+	-o ${BASENAME}.pdf \
+	-N \
+	-H ${SDIR}/templates/markdown.tex \
+	--shift-heading-level-by=-1 \
+	--toc \
+	--highlight-style breezedark \
+	--indented-code-classes=linenumbers

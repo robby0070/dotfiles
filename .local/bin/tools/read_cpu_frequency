@@ -1,0 +1,2 @@
+#!/bin/sh
+ watch -d 'cpupower frequency-info | grep "current CPU"' 

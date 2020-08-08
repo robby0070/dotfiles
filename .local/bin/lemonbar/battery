@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+while true; do
+	PERC=$(acpi --battery | head -1 | cut -d, -f2)
+	NUMBER=${PERC%?}
+	if [ $NUMBER -le 25 ]; then
+		bt="\uf243"
+	elif [ $NUMBER -le 50 ]; then
+		bt="\uf242"
+	elif [ $NUMBER -le 75 ]; then
+		bt="\uf241"
+	elif [ $NUMBER -le 100 ]; then
+		bt="\uf240"
+	fi
+	echo -e "B$PERC $bt"
+	sleep 1;
+done

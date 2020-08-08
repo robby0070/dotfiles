@@ -1,0 +1,18 @@
+#!/bin/sh
+
+OUTPUT="V"
+if [ "$(pamixer --get-mute)" == "true" ]; then
+	OUTPUT+="\uf00d"
+else
+	NUMBER="$(pamixer --get-volume)"
+	OUTPUT+="$NUMBER% "
+	if [ $NUMBER -le 33 ]; then
+		OUTPUT+="\uf026"
+	elif [ $NUMBER -le 66 ]; then
+		OUTPUT+="\uf027"
+	else
+		OUTPUT+="\uf028"
+	fi
+fi
+
+echo -e "$OUTPUT"

@@ -1,0 +1,4 @@
+#!/bin/sh
+mv ~/.config/wall.png ~/.config/wall.png.old -b
+mv ~/.config/wall.png.old~ ~/.config/wall.png
+apply_wallpaper

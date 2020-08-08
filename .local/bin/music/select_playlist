@@ -1,0 +1,2 @@
+#!/bin/bash
+ls ~/.config/mpd/playlists/ | sed -r 's/\..*//g' | dmenu -p "playlist: " 

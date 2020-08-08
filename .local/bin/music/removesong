@@ -1,0 +1,12 @@
+#!/bin/bash
+
+song_to_remove=$(mpc | head -n 1)
+playlist_pos=$(mpc -f %position% | head -n 1)
+#Delete the song
+rm "$(mpc -f %file% | head -n 1 | sed 's/^/\/home\/roberto-arch\/msc\//')"
+#Remove the song from playlist
+mpc del $playlist_pos
+#Write to log file
+echo "[`date`] -> --$song_to_remove-- is now deleted..." >> ~/.config/mpd/.mpdremove.log
+mpc update
+

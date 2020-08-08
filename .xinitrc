@@ -10,7 +10,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$(du "/home/roberto-arch/.local/bin" | cut -f2 | tr '\n' ':')"
 
 # Aliases used programs
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="kitty"
 export BROWSER="brave"
 export READER="zathura"
@@ -45,19 +45,16 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
-setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-
 # Starting some programs
 
 unclutter &
 apply_wallpaper &
-picom -b &
-flashfocus &
-nm-applet &
 thunar --daemon &
 /usr/lib/xfce-polkit/xfce-polkit &
+
+panel &
 sxhkd &
 dunst &
-
-exec i3 > /dev/null 2>&1 
+kitty --class=dropdown &
+bspwm > /dev/null 2>&1 
 

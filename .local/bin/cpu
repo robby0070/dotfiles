@@ -1,0 +1,14 @@
+#!/bin/bash
+command='cpupower frequency-set --max'
+if [ $1 = max ]
+then
+	$command 4.10GHz
+fi
+if [ $1 = mid ]
+then
+	$command 1.50GHz
+fi
+if [ $1 = low ]
+then
+	$command 800MHz
+fi

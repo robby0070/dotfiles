@@ -71,10 +71,9 @@ bindsym $mod+Shift+l		move right
 
 bindsym $mod+space			floating toggle
 
-
 bindsym $mod+Shift+s		move scratchpad
 
-bindsym $mod+slash			scratchpad show; move position center;
+bindsym $mod+slash			[class="Scratch"] scratchpad show; move position center;
 bindsym $mod+Shift+slash 	[class="Thunar"] scratchpad show; move position center;
 
 # #---Workspace Bindings---# #
