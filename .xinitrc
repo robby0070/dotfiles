@@ -18,13 +18,10 @@ export READER="zathura"
 # ssh fix for termite
 export TERM=xterm-color
 
-# dotfiles git repository
-#alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 # Adds the cross compiler directory and variables to path
 #export PREFIX="$HOME/prj/opt/cross"
 #export TARGET=i686-elf
-export PATH="$HOME/prj/opt/cross/bin:$PATH"
+#export PATH="$HOME/prj/opt/cross/bin:$PATH"
 
 # GOPATH 
 export GOPATH=$HOME/lng/go
@@ -45,16 +42,17 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
-# Starting some programs
+export DMENU_CONFIG="-i -nb #1C2023 -sf #ffffff -sb #45C7C4 -nf #ffffff"
 
+# Starting some programs
 unclutter &
-apply_wallpaper &
-thunar --daemon &
+#apply_wallpaper &
 /usr/lib/xfce-polkit/xfce-polkit &
 
-panel &
+panel > /dev/null 2>&1 &
 sxhkd &
 dunst &
-kitty --class=dropdown &
+start_scratchpad & 
+
 bspwm > /dev/null 2>&1 
 
