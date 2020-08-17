@@ -1,3 +1,9 @@
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'chrisbra/Colorizer'
+
+call plug#end()
+
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
@@ -11,9 +17,6 @@ set number relativenumber
 
 vnoremap <C-c> "+y
 map <C-p> "+P
-
-nnoremap <leader>c :w! \| !compiler %<c-r><CR><CR><CR>
-
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 nnoremap <leader>cm :w! \| !compiler %<c-r><CR><CR><CR>

@@ -11,7 +11,7 @@ export PATH="$PATH:$(du "/home/roberto-arch/.local/bin" | cut -f2 | tr '\n' ':')
 
 # Aliases used programs
 export EDITOR="vim"
-export TERMINAL="kitty"
+export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
 
@@ -49,10 +49,11 @@ unclutter &
 #apply_wallpaper &
 /usr/lib/xfce-polkit/xfce-polkit &
 
-panel > /dev/null 2>&1 &
 sxhkd &
 dunst &
 start_scratchpad & 
+picom -b &
+flashfocus &
 
 bspwm > /dev/null 2>&1 
 

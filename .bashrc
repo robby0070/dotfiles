@@ -11,7 +11,6 @@ set show-all-if-ambiguous on #tab completion
 HISTSIZE= HISTFILESIZE= # Infinite history.
 
 export PS1="\W >> "
-
 export GPG_TTY=$(tty)
 
 #sourcing 
@@ -23,8 +22,8 @@ alias untar="tar -xvzf"
 alias godir="cd ~/gopath/src/"
 alias cp="cpg -rg"
 alias mv="mvg -g"
-
 alias vim="nvim"
+alias ls="ls --color=auto"
 
 # Debian file server
 alias ssh_debian="ssh roberto-debian@192.168.0.2"
@@ -37,17 +36,10 @@ function cd {
     builtin cd "$@" && ls -F
 }
 
-stdw() {
-    $1 & disown $!
-}
-
 # Internet
 alias yt="youtube-dl --add-metadata -ic" # Download video link
 alias yta="yt -x -f bestaudio/best" # Download only audio
 alias YT="youtube-viewer"
-
-#programs
-alias dia="dia --integrated"
 
 #go
 vf() { $EDITOR $(fzf) ;}

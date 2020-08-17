@@ -51,7 +51,7 @@ super + shift + r
 	killall sxhkd; sxhkd
 
 super + s
-	import "/home/roberto-arch/tmp/screenshot_$(date +%s).png"
+	screenshot
 
 super + shift + t
 	thunar

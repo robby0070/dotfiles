@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bspc wm -r
+echo "ciao" > /home/roberto-arch/tmp/log
